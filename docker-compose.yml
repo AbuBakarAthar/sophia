@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: remote-jobs-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=true
+      - DATABASE_URL=sqlite:///./jobs.db
+    volumes:
+      - ./backend:/app/backend
+      - ./data:/app/data
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: remote-jobs-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    volumes:
+      - ./src:/app/src
+
+  db:
+    image: postgres:15-alpine
+    container_name: remote-jobs-db
+    environment:
+      POSTGRES_DB: jobs_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

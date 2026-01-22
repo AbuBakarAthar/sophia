@@ -1,0 +1,75 @@
+import { UniqueNavbar } from './components/UniqueNavbar';
+import { UniqueHero } from './components/UniqueHero';
+import { About } from './components/About';
+import { Projects } from './components/Projects';
+import { UniqueSkillsVisualization } from './components/UniqueSkillsVisualization';
+import { Testimonials } from './components/Testimonials';
+import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
+
+/**
+ * Enhanced App Component using Unique Frontend Components
+ * 
+ * This version uses the new custom components:
+ * - UniqueNavbar: Glassmorphic navigation with animations
+ * - UniqueHero: Advanced hero section with floating orbs and animations
+ * - UniqueSkillsVisualization: Interactive skills display with animations
+ * 
+ * You can mix and match unique and original components as needed.
+ */
+
+function App() {
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+      {/* Enhanced Navigation */}
+      <UniqueNavbar />
+      
+      {/* Enhanced Hero Section */}
+      <UniqueHero />
+      
+      {/* Original About Section (can be replaced with custom version) */}
+      <About />
+      
+      {/* Original Projects Section (can be replaced with custom version) */}
+      <Projects />
+      
+      {/* Enhanced Skills Section */}
+      <UniqueSkillsVisualization />
+      
+      {/* Original Testimonials Section */}
+      <Testimonials />
+      
+      {/* Original Contact Section */}
+      <Contact />
+      
+      {/* Original Footer */}
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
+
+/**
+ * CUSTOMIZATION GUIDE
+ * 
+ * Option 1: Use All Unique Components
+ * Replace all components with their unique versions for a completely new look.
+ * 
+ * Option 2: Gradual Enhancement (Current)
+ * Keep existing components while gradually adding unique ones.
+ * This is the safest approach for testing.
+ * 
+ * Option 3: Component Customization
+ * Modify the unique components' props and styling:
+ * 
+ * <UniqueHero 
+ *   title="Custom Title"
+ *   subtitle="Custom Subtitle"
+ *   primaryColor="from-purple-600 to-pink-600"
+ * />
+ * 
+ * Option 4: Create More Unique Components
+ * Following the same pattern as UniqueHero, UniqueNavbar, etc.
+ * See FRONTEND_ENHANCEMENTS.md for detailed instructions.
+ */
